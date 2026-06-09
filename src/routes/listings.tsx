@@ -76,7 +76,7 @@ function ListingsPage() {
         const rows = filtered.filter((l) => l.status === sec.status);
         if (rows.length === 0) return null;
         return (
-          <section key={sec.status} className="py-20 px-6 border-b border-foreground/5">
+          <section id={sec.status} key={sec.status} className="py-20 px-6 border-b border-foreground/5 scroll-mt-20">
             <div className="max-w-7xl mx-auto">
               <div className="flex items-end justify-between mb-12 gap-6">
                 <div>
