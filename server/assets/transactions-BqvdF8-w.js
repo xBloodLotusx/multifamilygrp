@@ -1,7 +1,9 @@
 import { jsxs, jsx } from "react/jsx-runtime";
-import { S as SiteLayout, P as PageHeader } from "./site-layout-CQHw8xvP.js";
+import { S as SiteLayout, P as PageHeader } from "./site-layout-vkqlSChi.js";
 import { l as listings, P as PropertyCard } from "./property-card-DfP8ODVN.js";
 import "@tanstack/react-router";
+import "react";
+import "lucide-react";
 function TransactionsPage() {
   const closed = listings.filter((l) => l.status === "closed");
   return /* @__PURE__ */ jsxs(SiteLayout, { children: [

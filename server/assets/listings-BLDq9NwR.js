@@ -1,8 +1,9 @@
 import { jsxs, jsx } from "react/jsx-runtime";
 import { useState } from "react";
-import { S as SiteLayout, P as PageHeader } from "./site-layout-CQHw8xvP.js";
+import { S as SiteLayout, P as PageHeader } from "./site-layout-vkqlSChi.js";
 import { S as STATUS_DOT, a as STATUS_LABEL, b as STATUS_CHIP, l as listings, P as PropertyCard } from "./property-card-DfP8ODVN.js";
 import { Link } from "@tanstack/react-router";
+import "lucide-react";
 function ListingsMap({ listings: listings2, height = "h-[560px]" }) {
   const [activeId, setActiveId] = useState(listings2[0]?.id ?? null);
   const active = listings2.find((l) => l.id === activeId) ?? null;
@@ -154,7 +155,7 @@ function ListingsPage() {
     SECTIONS.map((sec) => {
       const rows = filtered.filter((l) => l.status === sec.status);
       if (rows.length === 0) return null;
-      return /* @__PURE__ */ jsx("section", { className: "py-20 px-6 border-b border-foreground/5", children: /* @__PURE__ */ jsxs("div", { className: "max-w-7xl mx-auto", children: [
+      return /* @__PURE__ */ jsx("section", { id: sec.status, className: "py-20 px-6 border-b border-foreground/5 scroll-mt-20", children: /* @__PURE__ */ jsxs("div", { className: "max-w-7xl mx-auto", children: [
         /* @__PURE__ */ jsxs("div", { className: "flex items-end justify-between mb-12 gap-6", children: [
           /* @__PURE__ */ jsxs("div", { children: [
             /* @__PURE__ */ jsx("h2", { className: "font-serif text-3xl md:text-4xl mb-2", children: sec.title }),

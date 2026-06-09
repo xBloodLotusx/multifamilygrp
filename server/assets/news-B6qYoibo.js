@@ -1,6 +1,8 @@
 import { jsxs, jsx } from "react/jsx-runtime";
-import { S as SiteLayout, P as PageHeader } from "./site-layout-CQHw8xvP.js";
+import { S as SiteLayout, P as PageHeader } from "./site-layout-vkqlSChi.js";
 import "@tanstack/react-router";
+import "react";
+import "lucide-react";
 const SplitComponent = () => /* @__PURE__ */ jsxs(SiteLayout, { children: [
   /* @__PURE__ */ jsx(PageHeader, { eyebrow: "News", title: "Announcements & market commentary." }),
   /* @__PURE__ */ jsx("section", { className: "px-6 py-20 max-w-3xl mx-auto divide-y divide-foreground/5", children: [{

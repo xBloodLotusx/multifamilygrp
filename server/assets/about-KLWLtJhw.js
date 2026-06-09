@@ -1,6 +1,8 @@
 import { jsxs, jsx } from "react/jsx-runtime";
-import { S as SiteLayout, P as PageHeader } from "./site-layout-CQHw8xvP.js";
+import { S as SiteLayout, P as PageHeader } from "./site-layout-vkqlSChi.js";
 import "@tanstack/react-router";
+import "react";
+import "lucide-react";
 function AboutPage() {
   return /* @__PURE__ */ jsxs(SiteLayout, { children: [
     /* @__PURE__ */ jsx(PageHeader, { eyebrow: "About", title: "An owner-aligned multifamily advisory firm.", description: "Founded on the belief that institutional discipline and entrepreneurial service can coexist, The Multifamily Group represents owners across the nation." }),

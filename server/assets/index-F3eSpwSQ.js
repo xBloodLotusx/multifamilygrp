@@ -1,7 +1,9 @@
 import { jsxs, jsx } from "react/jsx-runtime";
 import { Link } from "@tanstack/react-router";
-import { S as SiteLayout } from "./site-layout-CQHw8xvP.js";
+import { S as SiteLayout } from "./site-layout-vkqlSChi.js";
 import { l as listings, P as PropertyCard } from "./property-card-DfP8ODVN.js";
+import "react";
+import "lucide-react";
 const heroImg = "/assets/hero-building-1hRtRvTh.jpg";
 function Index() {
   const featured = listings.slice(0, 6);

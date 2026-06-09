@@ -2,7 +2,7 @@ import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { createRootRouteWithContext, useRouter, Link, Outlet, HeadContent, Scripts, createFileRoute, lazyRouteComponent, createRouter } from "@tanstack/react-router";
 import { jsx, jsxs } from "react/jsx-runtime";
 import { useEffect } from "react";
-const appCss = "/assets/styles-cmpDYGHo.css";
+const appCss = "/assets/styles-C4FAhAog.css";
 function reportLovableError(error, context = {}) {
   if (typeof window === "undefined") return;
   window.__lovableEvents?.captureException?.(
@@ -66,7 +66,7 @@ function ErrorComponent({ error, reset }) {
     ] })
   ] }) });
 }
-const Route$b = createRootRouteWithContext()({
+const Route$c = createRootRouteWithContext()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
@@ -89,7 +89,10 @@ const Route$b = createRootRouteWithContext()({
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap"
-      }
+      },
+      { rel: "shortcut icon", type: "image/png", href: "https://multifamilygrp.com/wp-content/uploads/2024/09/TMG-Blue-Transparent-Favicon.png" },
+      { rel: "apple-touch-icon", sizes: "180x180", href: "https://multifamilygrp.com/wp-content/uploads/2024/09/TMG-180-x-180-px.png" },
+      { rel: "icon", sizes: "192x192", href: "https://multifamilygrp.com/wp-content/uploads/2024/09/TMG-192-x-192-px.png" }
     ]
   }),
   shellComponent: RootShell,
@@ -107,11 +110,11 @@ function RootShell({ children }) {
   ] });
 }
 function RootComponent() {
-  const { queryClient } = Route$b.useRouteContext();
+  const { queryClient } = Route$c.useRouteContext();
   return /* @__PURE__ */ jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsx(Outlet, {}) });
 }
-const $$splitComponentImporter$9 = () => import("./transactions-DP09Q08K.js");
-const Route$a = createFileRoute("/transactions")({
+const $$splitComponentImporter$a = () => import("./transactions-BqvdF8-w.js");
+const Route$b = createFileRoute("/transactions")({
   head: () => ({
     meta: [{
       title: "Transactions — The Multifamily Group"
@@ -126,10 +129,10 @@ const Route$a = createFileRoute("/transactions")({
       content: "Selected closed multifamily transactions."
     }]
   }),
-  component: lazyRouteComponent($$splitComponentImporter$9, "component")
+  component: lazyRouteComponent($$splitComponentImporter$a, "component")
 });
-const $$splitComponentImporter$8 = () => import("./team-s3kxQJHm.js");
-const Route$9 = createFileRoute("/team")({
+const $$splitComponentImporter$9 = () => import("./team-BqbMyY4J.js");
+const Route$a = createFileRoute("/team")({
   head: () => ({
     meta: [{
       title: "Team — The Multifamily Group"
@@ -144,7 +147,7 @@ const Route$9 = createFileRoute("/team")({
       content: "Meet our multifamily investment sales advisors."
     }]
   }),
-  component: lazyRouteComponent($$splitComponentImporter$8, "component")
+  component: lazyRouteComponent($$splitComponentImporter$9, "component")
 });
 const BASE_URL = "";
 const PATHS = [
@@ -159,7 +162,7 @@ const PATHS = [
   "/reports",
   "/contact"
 ];
-const Route$8 = createFileRoute("/sitemap.xml")({
+const Route$9 = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
@@ -185,8 +188,8 @@ const Route$8 = createFileRoute("/sitemap.xml")({
     }
   }
 });
-const $$splitComponentImporter$7 = () => import("./reports-BYDwRoR9.js");
-const Route$7 = createFileRoute("/reports")({
+const $$splitComponentImporter$8 = () => import("./reports-Cd7fOFCJ.js");
+const Route$8 = createFileRoute("/reports")({
   head: () => ({
     meta: [{
       title: "Market Reports — The Multifamily Group"
@@ -201,10 +204,10 @@ const Route$7 = createFileRoute("/reports")({
       content: "Quarterly multifamily research."
     }]
   }),
-  component: lazyRouteComponent($$splitComponentImporter$7, "component")
+  component: lazyRouteComponent($$splitComponentImporter$8, "component")
 });
-const $$splitComponentImporter$6 = () => import("./process-D-kqcTAP.js");
-const Route$6 = createFileRoute("/process")({
+const $$splitComponentImporter$7 = () => import("./process-BezbFcPi.js");
+const Route$7 = createFileRoute("/process")({
   head: () => ({
     meta: [{
       title: "Our Process — The Multifamily Group"
@@ -219,10 +222,10 @@ const Route$6 = createFileRoute("/process")({
       content: "Seven-step institutional multifamily brokerage methodology."
     }]
   }),
-  component: lazyRouteComponent($$splitComponentImporter$6, "component")
+  component: lazyRouteComponent($$splitComponentImporter$7, "component")
 });
-const $$splitComponentImporter$5 = () => import("./news-CnxFrUXj.js");
-const Route$5 = createFileRoute("/news")({
+const $$splitComponentImporter$6 = () => import("./news-B6qYoibo.js");
+const Route$6 = createFileRoute("/news")({
   head: () => ({
     meta: [{
       title: "News — The Multifamily Group"
@@ -237,10 +240,10 @@ const Route$5 = createFileRoute("/news")({
       content: "Firm announcements and market commentary."
     }]
   }),
-  component: lazyRouteComponent($$splitComponentImporter$5, "component")
+  component: lazyRouteComponent($$splitComponentImporter$6, "component")
 });
-const $$splitComponentImporter$4 = () => import("./listings-OYJB-pB5.js");
-const Route$4 = createFileRoute("/listings")({
+const $$splitComponentImporter$5 = () => import("./listings-BLDq9NwR.js");
+const Route$5 = createFileRoute("/listings")({
   head: () => ({
     meta: [{
       title: "Current Listings — The Multifamily Group"
@@ -255,10 +258,10 @@ const Route$4 = createFileRoute("/listings")({
       content: "Interactive map and grid of current multifamily investment offerings."
     }]
   }),
-  component: lazyRouteComponent($$splitComponentImporter$4, "component")
+  component: lazyRouteComponent($$splitComponentImporter$5, "component")
 });
-const $$splitComponentImporter$3 = () => import("./contact-B5G_Lch3.js");
-const Route$3 = createFileRoute("/contact")({
+const $$splitComponentImporter$4 = () => import("./contact-CASE3e3A.js");
+const Route$4 = createFileRoute("/contact")({
   head: () => ({
     meta: [{
       title: "Contact — The Multifamily Group"
@@ -273,10 +276,10 @@ const Route$3 = createFileRoute("/contact")({
       content: "Request a confidential conversation with TMG."
     }]
   }),
-  component: lazyRouteComponent($$splitComponentImporter$3, "component")
+  component: lazyRouteComponent($$splitComponentImporter$4, "component")
 });
-const $$splitComponentImporter$2 = () => import("./careers-DTe-Qyyp.js");
-const Route$2 = createFileRoute("/careers")({
+const $$splitComponentImporter$3 = () => import("./careers-tRUcCRCg.js");
+const Route$3 = createFileRoute("/careers")({
   head: () => ({
     meta: [{
       title: "Careers — The Multifamily Group"
@@ -291,9 +294,27 @@ const Route$2 = createFileRoute("/careers")({
       content: "Join our multifamily brokerage team."
     }]
   }),
+  component: lazyRouteComponent($$splitComponentImporter$3, "component")
+});
+const $$splitComponentImporter$2 = () => import("./blog-BoI5WTdw.js");
+const Route$2 = createFileRoute("/blog")({
+  head: () => ({
+    meta: [{
+      title: "Blog — The Multifamily Group"
+    }, {
+      name: "description",
+      content: "Insights, perspectives, and field notes from the TMG advisory team."
+    }, {
+      property: "og:title",
+      content: "Blog — The Multifamily Group"
+    }, {
+      property: "og:description",
+      content: "Insights and perspectives from TMG advisors."
+    }]
+  }),
   component: lazyRouteComponent($$splitComponentImporter$2, "component")
 });
-const $$splitComponentImporter$1 = () => import("./about-DMA09NT2.js");
+const $$splitComponentImporter$1 = () => import("./about-KLWLtJhw.js");
 const Route$1 = createFileRoute("/about")({
   head: () => ({
     meta: [{
@@ -311,7 +332,7 @@ const Route$1 = createFileRoute("/about")({
   }),
   component: lazyRouteComponent($$splitComponentImporter$1, "component")
 });
-const $$splitComponentImporter = () => import("./index-C4Ls9ujg.js");
+const $$splitComponentImporter = () => import("./index-F3eSpwSQ.js");
 const Route = createFileRoute("/")({
   head: () => ({
     meta: [{
@@ -329,64 +350,70 @@ const Route = createFileRoute("/")({
   }),
   component: lazyRouteComponent($$splitComponentImporter, "component")
 });
-const TransactionsRoute = Route$a.update({
+const TransactionsRoute = Route$b.update({
   id: "/transactions",
   path: "/transactions",
-  getParentRoute: () => Route$b
+  getParentRoute: () => Route$c
 });
-const TeamRoute = Route$9.update({
+const TeamRoute = Route$a.update({
   id: "/team",
   path: "/team",
-  getParentRoute: () => Route$b
+  getParentRoute: () => Route$c
 });
-const SitemapDotxmlRoute = Route$8.update({
+const SitemapDotxmlRoute = Route$9.update({
   id: "/sitemap.xml",
   path: "/sitemap.xml",
-  getParentRoute: () => Route$b
+  getParentRoute: () => Route$c
 });
-const ReportsRoute = Route$7.update({
+const ReportsRoute = Route$8.update({
   id: "/reports",
   path: "/reports",
-  getParentRoute: () => Route$b
+  getParentRoute: () => Route$c
 });
-const ProcessRoute = Route$6.update({
+const ProcessRoute = Route$7.update({
   id: "/process",
   path: "/process",
-  getParentRoute: () => Route$b
+  getParentRoute: () => Route$c
 });
-const NewsRoute = Route$5.update({
+const NewsRoute = Route$6.update({
   id: "/news",
   path: "/news",
-  getParentRoute: () => Route$b
+  getParentRoute: () => Route$c
 });
-const ListingsRoute = Route$4.update({
+const ListingsRoute = Route$5.update({
   id: "/listings",
   path: "/listings",
-  getParentRoute: () => Route$b
+  getParentRoute: () => Route$c
 });
-const ContactRoute = Route$3.update({
+const ContactRoute = Route$4.update({
   id: "/contact",
   path: "/contact",
-  getParentRoute: () => Route$b
+  getParentRoute: () => Route$c
 });
-const CareersRoute = Route$2.update({
+const CareersRoute = Route$3.update({
   id: "/careers",
   path: "/careers",
-  getParentRoute: () => Route$b
+  getParentRoute: () => Route$c
+});
+const BlogRoute = Route$2.update({
+  id: "/blog",
+  path: "/blog",
+  getParentRoute: () => Route$c
 });
 const AboutRoute = Route$1.update({
   id: "/about",
   path: "/about",
-  getParentRoute: () => Route$b
+  getParentRoute: () => Route$c
 });
 const IndexRoute = Route.update({
   id: "/",
   path: "/",
-  getParentRoute: () => Route$b
+  getParentRoute: () => Route$c
 });
 const rootRouteChildren = {
   IndexRoute,
   AboutRoute,
+  BlogRoute,
   CareersRoute,
   ContactRoute,
   ListingsRoute,
@@ -397,7 +424,7 @@ const rootRouteChildren = {
   TeamRoute,
   TransactionsRoute
 };
-const routeTree = Route$b._addFileChildren(rootRouteChildren)._addFileTypes();
+const routeTree = Route$c._addFileChildren(rootRouteChildren)._addFileTypes();
 const getRouter = () => {
   const queryClient = new QueryClient();
   const router = createRouter({
