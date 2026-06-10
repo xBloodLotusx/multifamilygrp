@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout, PageHeader } from "@/components/site-layout";
 import { PropertyCard } from "@/components/property-card";
@@ -17,28 +17,62 @@ export const Route = createFileRoute("/listings")({
   component: ListingsPage,
 });
 
-const SECTIONS: { status: ListingStatus; title: string; description: string }[] = [
+const TABS: { status: ListingStatus; title: string; description: string }[] = [
   { status: "available", title: "Available", description: "Actively marketed offerings open for tour and offer." },
-  { status: "under-contract", title: "Under Contract", description: "Negotiated with a single buyer; back-up offers welcome." },
   { status: "in-escrow", title: "In Escrow", description: "Past contingency, moving toward close." },
+  { status: "closed", title: "Recently Closed", description: "A representative sample of recently closed multifamily transactions." },
 ];
 
 const STATE_OPTIONS = Array.from(new Set(listings.map((l) => l.state))).sort();
 
 function ListingsPage() {
   const [stateFilter, setStateFilter] = useState<string>("all");
+  const [activeTab, setActiveTab] = useState<ListingStatus>("available");
+
+  // Honor hash like #in-escrow or #closed to preselect tab
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const h = window.location.hash.replace("#", "") as ListingStatus;
+    if (TABS.some((t) => t.status === h)) setActiveTab(h);
+  }, []);
 
   const filtered = listings.filter(
-    (l) => stateFilter === "all" || l.state === stateFilter,
+    (l) =>
+      l.status === activeTab &&
+      (stateFilter === "all" || l.state === stateFilter),
   );
+  const activeSection = TABS.find((t) => t.status === activeTab)!;
 
   return (
     <SiteLayout>
       <PageHeader
-        eyebrow="Current Listings"
-        title="Active multifamily offerings."
-        description="Explore our nationwide pipeline on the interactive map, then browse offerings by status below."
+        eyebrow="Properties"
+        title="Our multifamily pipeline."
+        description="Explore offerings on the interactive map and switch between Available, In Escrow, and Recently Closed below."
       />
+
+      {/* Tabs */}
+      <section className="px-6 pt-10">
+        <div className="max-w-7xl mx-auto flex flex-wrap gap-2 border-b border-foreground/10">
+          {TABS.map((t) => {
+            const isActive = t.status === activeTab;
+            return (
+              <button
+                key={t.status}
+                type="button"
+                onClick={() => setActiveTab(t.status)}
+                className={`px-5 py-3 text-sm font-medium -mb-px border-b-2 transition-colors ${
+                  isActive
+                    ? "border-foreground text-foreground"
+                    : "border-transparent text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {t.title}
+              </button>
+            );
+          })}
+        </div>
+      </section>
 
       {/* Map */}
       <section className="py-12 px-6 bg-surface-muted/40 border-b border-foreground/5">
@@ -48,7 +82,7 @@ function ListingsPage() {
               <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-2">
                 Interactive Property Explorer
               </div>
-              <h2 className="font-serif text-3xl md:text-4xl">Nationwide reach.</h2>
+              <h2 className="font-serif text-3xl md:text-4xl">{activeSection.title}</h2>
             </div>
             <div className="flex items-center gap-3">
               <label className="text-xs uppercase tracking-wider text-muted-foreground" htmlFor="state">
@@ -71,31 +105,29 @@ function ListingsPage() {
         </div>
       </section>
 
-      {/* Grouped grids */}
-      {SECTIONS.map((sec) => {
-        const rows = filtered.filter((l) => l.status === sec.status);
-        if (rows.length === 0) return null;
-        return (
-          <section id={sec.status} key={sec.status} className="py-20 px-6 border-b border-foreground/5 scroll-mt-20">
-            <div className="max-w-7xl mx-auto">
-              <div className="flex items-end justify-between mb-12 gap-6">
-                <div>
-                  <h2 className="font-serif text-3xl md:text-4xl mb-2">{sec.title}</h2>
-                  <p className="text-sm text-muted-foreground max-w-md">{sec.description}</p>
-                </div>
-                <span className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-                  {rows.length} offering{rows.length === 1 ? "" : "s"}
-                </span>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
-                {rows.map((l) => (
-                  <PropertyCard key={l.id} listing={l} />
-                ))}
-              </div>
+      {/* Cards for active tab */}
+      <section className="py-20 px-6 border-b border-foreground/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-end justify-between mb-12 gap-6">
+            <div>
+              <h2 className="font-serif text-3xl md:text-4xl mb-2">{activeSection.title}</h2>
+              <p className="text-sm text-muted-foreground max-w-md">{activeSection.description}</p>
             </div>
-          </section>
-        );
-      })}
+            <span className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+              {filtered.length} offering{filtered.length === 1 ? "" : "s"}
+            </span>
+          </div>
+          {filtered.length === 0 ? (
+            <p className="text-muted-foreground">No offerings match the current filter.</p>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
+              {filtered.map((l) => (
+                <PropertyCard key={l.id} listing={l} />
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
     </SiteLayout>
   );
 }

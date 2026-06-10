@@ -27,14 +27,15 @@ function Index() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
           <div className="lg:col-span-8">
             <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-6">
-              Multifamily Brokerage &bull; Investment Sales &bull; Nationwide
+              The Multifamily Group
             </div>
             <h1 className="font-serif text-5xl md:text-7xl leading-[1.02] text-balance max-w-[20ch]">
-              Precision in multifamily investment sales.
+              Opening Doors &amp; Closing Deals
             </h1>
-            <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-[52ch] text-pretty">
-              A nationwide network delivering institutional-grade brokerage and asset valuation
-              for the sophisticated multifamily investor.
+            <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-[58ch] text-pretty">
+              The Multifamily Group is a commercial real estate brokerage focused exclusively on
+              the marketing and sale of multi-housing assets. Investors and sellers look to The
+              Multifamily Group for one thing&mdash;results.
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
               <Link

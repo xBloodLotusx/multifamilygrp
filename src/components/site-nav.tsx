@@ -4,17 +4,14 @@ import { ChevronDown, Menu, X } from "lucide-react";
 
 type NavItem = {
   label: string;
-  children: { to: string; hash?: string; label: string }[];
+  to?: string;
+  children?: { to: string; hash?: string; label: string }[];
 };
 
 const NAV: NavItem[] = [
   {
     label: "Properties",
-    children: [
-      { to: "/listings", label: "Current Listings" },
-      { to: "/listings", hash: "in-escrow", label: "In Escrow" },
-      { to: "/transactions", label: "Recently Closed" },
-    ],
+    to: "/listings",
   },
   {
     label: "About",
@@ -56,6 +53,15 @@ export function SiteNav() {
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-1">
           {NAV.map((item) => (
+            !item.children ? (
+              <Link
+                key={item.label}
+                to={item.to!}
+                className="px-4 py-2 text-sm font-medium text-white/85 hover:text-white transition-colors"
+              >
+                {item.label}
+              </Link>
+            ) : (
             <div key={item.label} className="relative group">
               <button
                 type="button"
@@ -71,7 +77,7 @@ export function SiteNav() {
                   transition-all duration-150"
               >
                 <div className="bg-background text-foreground rounded-md shadow-lg ring-1 ring-foreground/10 overflow-hidden py-2">
-                  {item.children.map((c) => (
+                  {item.children!.map((c) => (
                     <Link
                       key={`${c.to}${c.hash ?? ""}${c.label}`}
                       to={c.to}
@@ -84,6 +90,7 @@ export function SiteNav() {
                 </div>
               </div>
             </div>
+            )
           ))}
         </div>
 
@@ -103,6 +110,22 @@ export function SiteNav() {
         <div className="md:hidden border-t border-white/10 bg-tmg-navy">
           <div className="px-6 py-4 space-y-1">
             {NAV.map((item) => {
+              if (!item.children) {
+                return (
+                  <div key={item.label} className="border-b border-white/10 last:border-b-0">
+                    <Link
+                      to={item.to!}
+                      onClick={() => {
+                        setMobileOpen(false);
+                        setOpenMobile(null);
+                      }}
+                      className="block py-3 text-sm font-medium text-white/90"
+                    >
+                      {item.label}
+                    </Link>
+                  </div>
+                );
+              }
               const isOpen = openMobile === item.label;
               return (
                 <div key={item.label} className="border-b border-white/10 last:border-b-0">
@@ -118,7 +141,7 @@ export function SiteNav() {
                   </button>
                   {isOpen && (
                     <div className="pb-3 pl-3 space-y-1">
-                      {item.children.map((c) => (
+                      {item.children!.map((c) => (
                         <Link
                           key={`${c.to}${c.hash ?? ""}${c.label}`}
                           to={c.to}
