@@ -143,16 +143,9 @@ function ListingsPage() {
   const activeSection = TABS.find((t) => t.status === activeTab);
   return /* @__PURE__ */ jsxs(SiteLayout, { children: [
     /* @__PURE__ */ jsx(PageHeader, { eyebrow: "Properties", title: "Our multifamily pipeline.", description: "Explore offerings on the interactive map and switch between Available, In Escrow, and Recently Closed below." }),
-    /* @__PURE__ */ jsx("section", { className: "px-6 pt-10", children: /* @__PURE__ */ jsx("div", { className: "max-w-7xl mx-auto flex flex-wrap gap-2 border-b border-foreground/10", children: TABS.map((t) => {
-      const isActive = t.status === activeTab;
-      return /* @__PURE__ */ jsx("button", { type: "button", onClick: () => setActiveTab(t.status), className: `px-5 py-3 text-sm font-medium -mb-px border-b-2 transition-colors ${isActive ? "border-foreground text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"}`, children: t.title }, t.status);
-    }) }) }),
     /* @__PURE__ */ jsx("section", { className: "py-12 px-6 bg-surface-muted/40 border-b border-foreground/5", children: /* @__PURE__ */ jsxs("div", { className: "max-w-7xl mx-auto", children: [
       /* @__PURE__ */ jsxs("div", { className: "flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("div", { className: "text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-2", children: "Interactive Property Explorer" }),
-          /* @__PURE__ */ jsx("h2", { className: "font-serif text-3xl md:text-4xl", children: activeSection.title })
-        ] }),
+        /* @__PURE__ */ jsx("div", { className: "text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground", children: "Interactive Property Explorer" }),
         /* @__PURE__ */ jsxs("div", { className: "flex items-center gap-3", children: [
           /* @__PURE__ */ jsx("label", { className: "text-xs uppercase tracking-wider text-muted-foreground", htmlFor: "state", children: "Filter by state" }),
           /* @__PURE__ */ jsxs("select", { id: "state", value: stateFilter, onChange: (e) => setStateFilter(e.target.value), className: "text-sm bg-background ring-1 ring-foreground/10 rounded-sm px-3 py-2", children: [
@@ -163,12 +156,13 @@ function ListingsPage() {
       ] }),
       /* @__PURE__ */ jsx(ListingsMap, { listings: filtered })
     ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "px-6 pt-10", children: /* @__PURE__ */ jsx("div", { className: "max-w-7xl mx-auto flex flex-wrap gap-2 border-b border-foreground/10", children: TABS.map((t) => {
+      const isActive = t.status === activeTab;
+      return /* @__PURE__ */ jsx("button", { type: "button", onClick: () => setActiveTab(t.status), className: `px-5 py-3 text-sm font-medium -mb-px border-b-2 transition-colors ${isActive ? "border-foreground text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"}`, children: t.title }, t.status);
+    }) }) }),
     /* @__PURE__ */ jsx("section", { className: "py-20 px-6 border-b border-foreground/5", children: /* @__PURE__ */ jsxs("div", { className: "max-w-7xl mx-auto", children: [
       /* @__PURE__ */ jsxs("div", { className: "flex items-end justify-between mb-12 gap-6", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("h2", { className: "font-serif text-3xl md:text-4xl mb-2", children: activeSection.title }),
-          /* @__PURE__ */ jsx("p", { className: "text-sm text-muted-foreground max-w-md", children: activeSection.description })
-        ] }),
+        /* @__PURE__ */ jsx("p", { className: "text-sm text-muted-foreground max-w-md", children: activeSection.description }),
         /* @__PURE__ */ jsxs("span", { className: "text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground", children: [
           filtered.length,
           " offering",

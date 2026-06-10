@@ -2,7 +2,7 @@ import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { createRootRouteWithContext, useRouter, Link, Outlet, HeadContent, Scripts, createFileRoute, lazyRouteComponent, createRouter } from "@tanstack/react-router";
 import { jsx, jsxs } from "react/jsx-runtime";
 import { useEffect } from "react";
-const appCss = "/assets/styles-CcSMm1o6.css";
+const appCss = "/assets/styles-BzIQuJbi.css";
 function reportLovableError(error, context = {}) {
   if (typeof window === "undefined") return;
   window.__lovableEvents?.captureException?.(
@@ -242,7 +242,7 @@ const Route$6 = createFileRoute("/news")({
   }),
   component: lazyRouteComponent($$splitComponentImporter$6, "component")
 });
-const $$splitComponentImporter$5 = () => import("./listings-C7TWRGJO.js");
+const $$splitComponentImporter$5 = () => import("./listings-D_MvPqn5.js");
 const Route$5 = createFileRoute("/listings")({
   head: () => ({
     meta: [{
@@ -332,7 +332,7 @@ const Route$1 = createFileRoute("/about")({
   }),
   component: lazyRouteComponent($$splitComponentImporter$1, "component")
 });
-const $$splitComponentImporter = () => import("./index-YYT44Kw7.js");
+const $$splitComponentImporter = () => import("./index-BygWKHWj.js");
 const Route = createFileRoute("/")({
   head: () => ({
     meta: [{

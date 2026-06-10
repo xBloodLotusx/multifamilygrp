@@ -1,30 +1,33 @@
 import { jsxs, jsx } from "react/jsx-runtime";
 import { Link } from "@tanstack/react-router";
+import { ChevronDown } from "lucide-react";
 import { S as SiteLayout } from "./site-layout-DOmaAtVs.js";
 import { l as listings, P as PropertyCard } from "./property-card-DfP8ODVN.js";
 import "react";
-import "lucide-react";
 const heroImg = "/assets/hero-building-1hRtRvTh.jpg";
 function Index() {
   const featured = listings.slice(0, 6);
   const active = listings.filter((l) => l.status === "available");
   return /* @__PURE__ */ jsxs(SiteLayout, { children: [
-    /* @__PURE__ */ jsx("section", { className: "py-24 md:py-32 px-6", children: /* @__PURE__ */ jsxs("div", { className: "max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-end", children: [
-      /* @__PURE__ */ jsxs("div", { className: "lg:col-span-8", children: [
-        /* @__PURE__ */ jsx("div", { className: "text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-6", children: "The Multifamily Group" }),
-        /* @__PURE__ */ jsx("h1", { className: "font-serif text-5xl md:text-7xl leading-[1.02] text-balance max-w-[20ch]", children: "Opening Doors & Closing Deals" }),
-        /* @__PURE__ */ jsx("p", { className: "mt-8 text-lg md:text-xl text-muted-foreground max-w-[58ch] text-pretty", children: "The Multifamily Group is a commercial real estate brokerage focused exclusively on the marketing and sale of multi-housing assets. Investors and sellers look to The Multifamily Group for one thing—results." }),
-        /* @__PURE__ */ jsxs("div", { className: "mt-10 flex flex-wrap gap-3", children: [
-          /* @__PURE__ */ jsxs(Link, { to: "/listings", className: "bg-foreground text-background text-sm font-medium pl-4 pr-5 py-3 inline-flex items-center gap-2 rounded-sm hover:bg-foreground/90 transition-colors", children: [
+    /* @__PURE__ */ jsxs("section", { className: "py-24 md:py-32 px-6", children: [
+      /* @__PURE__ */ jsxs("div", { className: "max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-end", children: [
+        /* @__PURE__ */ jsxs("div", { className: "lg:col-span-8", children: [
+          /* @__PURE__ */ jsx("div", { className: "text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-6", children: "The Multifamily Group" }),
+          /* @__PURE__ */ jsx("h1", { className: "font-serif text-5xl md:text-7xl leading-[1.02] text-balance max-w-[20ch]", children: "Opening Doors & Closing Deals" }),
+          /* @__PURE__ */ jsx("p", { className: "mt-8 text-lg md:text-xl text-muted-foreground max-w-[58ch] text-pretty", children: "The Multifamily Group is a commercial real estate brokerage focused exclusively on the marketing and sale of multi-housing assets. Investors and sellers look to The Multifamily Group for one thing—results." }),
+          /* @__PURE__ */ jsx("div", { className: "mt-10 flex flex-wrap gap-3", children: /* @__PURE__ */ jsxs(Link, { to: "/listings", className: "bg-foreground text-background text-sm font-medium pl-4 pr-5 py-3 inline-flex items-center gap-2 rounded-sm hover:bg-foreground/90 transition-colors", children: [
             /* @__PURE__ */ jsx("span", { "aria-hidden": true, children: "→" }),
             " View Current Listings"
-          ] }),
-          /* @__PURE__ */ jsx(Link, { to: "/process", className: "text-sm font-medium ring-1 ring-foreground/15 px-5 py-3 rounded-sm hover:bg-foreground hover:text-background transition-colors", children: "Our Process" })
-        ] })
+          ] }) })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "lg:col-span-4", children: /* @__PURE__ */ jsx("div", { className: "w-full aspect-[4/5] bg-surface-muted rounded-[12px] outline-1 -outline-offset-1 outline-foreground/5 overflow-hidden", children: /* @__PURE__ */ jsx("img", { src: heroImg, alt: "Modern urban multifamily residential architecture at golden hour", width: 896, height: 1120, className: "w-full h-full object-cover" }) }) })
       ] }),
-      /* @__PURE__ */ jsx("div", { className: "lg:col-span-4", children: /* @__PURE__ */ jsx("div", { className: "w-full aspect-[4/5] bg-surface-muted rounded-[12px] outline-1 -outline-offset-1 outline-foreground/5 overflow-hidden", children: /* @__PURE__ */ jsx("img", { src: heroImg, alt: "Modern urban multifamily residential architecture at golden hour", width: 896, height: 1120, className: "w-full h-full object-cover" }) }) })
-    ] }) }),
-    /* @__PURE__ */ jsx("section", { className: "border-y border-foreground/5 bg-surface-muted/40", children: /* @__PURE__ */ jsx("div", { className: "max-w-7xl mx-auto px-6 py-12 grid grid-cols-2 md:grid-cols-4 gap-8", children: [{
+      /* @__PURE__ */ jsx("div", { className: "max-w-7xl mx-auto mt-16 flex justify-center", children: /* @__PURE__ */ jsxs("a", { href: "#explore", "aria-label": "Scroll to explore", className: "group inline-flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors", children: [
+        /* @__PURE__ */ jsx("span", { className: "text-[10px] uppercase tracking-[0.25em]", children: "Scroll" }),
+        /* @__PURE__ */ jsx(ChevronDown, { className: "w-5 h-5 animate-bounce" })
+      ] }) })
+    ] }),
+    /* @__PURE__ */ jsx("section", { id: "explore", className: "border-y border-foreground/5 bg-surface-muted/40 scroll-mt-20", children: /* @__PURE__ */ jsx("div", { className: "max-w-7xl mx-auto px-6 py-12 grid grid-cols-2 md:grid-cols-4 gap-8", children: [{
       k: "$4.2B+",
       v: "Transaction Volume"
     }, {
