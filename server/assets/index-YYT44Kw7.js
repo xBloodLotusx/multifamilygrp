@@ -1,6 +1,6 @@
 import { jsxs, jsx } from "react/jsx-runtime";
 import { Link } from "@tanstack/react-router";
-import { S as SiteLayout } from "./site-layout-vkqlSChi.js";
+import { S as SiteLayout } from "./site-layout-DOmaAtVs.js";
 import { l as listings, P as PropertyCard } from "./property-card-DfP8ODVN.js";
 import "react";
 import "lucide-react";
@@ -11,9 +11,9 @@ function Index() {
   return /* @__PURE__ */ jsxs(SiteLayout, { children: [
     /* @__PURE__ */ jsx("section", { className: "py-24 md:py-32 px-6", children: /* @__PURE__ */ jsxs("div", { className: "max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-end", children: [
       /* @__PURE__ */ jsxs("div", { className: "lg:col-span-8", children: [
-        /* @__PURE__ */ jsx("div", { className: "text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-6", children: "Multifamily Brokerage • Investment Sales • Nationwide" }),
-        /* @__PURE__ */ jsx("h1", { className: "font-serif text-5xl md:text-7xl leading-[1.02] text-balance max-w-[20ch]", children: "Precision in multifamily investment sales." }),
-        /* @__PURE__ */ jsx("p", { className: "mt-8 text-lg md:text-xl text-muted-foreground max-w-[52ch] text-pretty", children: "A nationwide network delivering institutional-grade brokerage and asset valuation for the sophisticated multifamily investor." }),
+        /* @__PURE__ */ jsx("div", { className: "text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-6", children: "The Multifamily Group" }),
+        /* @__PURE__ */ jsx("h1", { className: "font-serif text-5xl md:text-7xl leading-[1.02] text-balance max-w-[20ch]", children: "Opening Doors & Closing Deals" }),
+        /* @__PURE__ */ jsx("p", { className: "mt-8 text-lg md:text-xl text-muted-foreground max-w-[58ch] text-pretty", children: "The Multifamily Group is a commercial real estate brokerage focused exclusively on the marketing and sale of multi-housing assets. Investors and sellers look to The Multifamily Group for one thing—results." }),
         /* @__PURE__ */ jsxs("div", { className: "mt-10 flex flex-wrap gap-3", children: [
           /* @__PURE__ */ jsxs(Link, { to: "/listings", className: "bg-foreground text-background text-sm font-medium pl-4 pr-5 py-3 inline-flex items-center gap-2 rounded-sm hover:bg-foreground/90 transition-colors", children: [
             /* @__PURE__ */ jsx("span", { "aria-hidden": true, children: "→" }),

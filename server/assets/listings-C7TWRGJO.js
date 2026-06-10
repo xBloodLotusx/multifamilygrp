@@ -1,6 +1,6 @@
 import { jsxs, jsx } from "react/jsx-runtime";
-import { useState } from "react";
-import { S as SiteLayout, P as PageHeader } from "./site-layout-vkqlSChi.js";
+import { useState, useEffect } from "react";
+import { S as SiteLayout, P as PageHeader } from "./site-layout-DOmaAtVs.js";
 import { S as STATUS_DOT, a as STATUS_LABEL, b as STATUS_CHIP, l as listings, P as PropertyCard } from "./property-card-DfP8ODVN.js";
 import { Link } from "@tanstack/react-router";
 import "lucide-react";
@@ -117,30 +117,41 @@ function ListingsMap({ listings: listings2, height = "h-[560px]" }) {
     }
   );
 }
-const SECTIONS = [{
+const TABS = [{
   status: "available",
   title: "Available",
   description: "Actively marketed offerings open for tour and offer."
 }, {
-  status: "under-contract",
-  title: "Under Contract",
-  description: "Negotiated with a single buyer; back-up offers welcome."
-}, {
   status: "in-escrow",
   title: "In Escrow",
   description: "Past contingency, moving toward close."
+}, {
+  status: "closed",
+  title: "Recently Closed",
+  description: "A representative sample of recently closed multifamily transactions."
 }];
 const STATE_OPTIONS = Array.from(new Set(listings.map((l) => l.state))).sort();
 function ListingsPage() {
   const [stateFilter, setStateFilter] = useState("all");
-  const filtered = listings.filter((l) => stateFilter === "all" || l.state === stateFilter);
+  const [activeTab, setActiveTab] = useState("available");
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const h = window.location.hash.replace("#", "");
+    if (TABS.some((t) => t.status === h)) setActiveTab(h);
+  }, []);
+  const filtered = listings.filter((l) => l.status === activeTab && (stateFilter === "all" || l.state === stateFilter));
+  const activeSection = TABS.find((t) => t.status === activeTab);
   return /* @__PURE__ */ jsxs(SiteLayout, { children: [
-    /* @__PURE__ */ jsx(PageHeader, { eyebrow: "Current Listings", title: "Active multifamily offerings.", description: "Explore our nationwide pipeline on the interactive map, then browse offerings by status below." }),
+    /* @__PURE__ */ jsx(PageHeader, { eyebrow: "Properties", title: "Our multifamily pipeline.", description: "Explore offerings on the interactive map and switch between Available, In Escrow, and Recently Closed below." }),
+    /* @__PURE__ */ jsx("section", { className: "px-6 pt-10", children: /* @__PURE__ */ jsx("div", { className: "max-w-7xl mx-auto flex flex-wrap gap-2 border-b border-foreground/10", children: TABS.map((t) => {
+      const isActive = t.status === activeTab;
+      return /* @__PURE__ */ jsx("button", { type: "button", onClick: () => setActiveTab(t.status), className: `px-5 py-3 text-sm font-medium -mb-px border-b-2 transition-colors ${isActive ? "border-foreground text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"}`, children: t.title }, t.status);
+    }) }) }),
     /* @__PURE__ */ jsx("section", { className: "py-12 px-6 bg-surface-muted/40 border-b border-foreground/5", children: /* @__PURE__ */ jsxs("div", { className: "max-w-7xl mx-auto", children: [
       /* @__PURE__ */ jsxs("div", { className: "flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8", children: [
         /* @__PURE__ */ jsxs("div", { children: [
           /* @__PURE__ */ jsx("div", { className: "text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-2", children: "Interactive Property Explorer" }),
-          /* @__PURE__ */ jsx("h2", { className: "font-serif text-3xl md:text-4xl", children: "Nationwide reach." })
+          /* @__PURE__ */ jsx("h2", { className: "font-serif text-3xl md:text-4xl", children: activeSection.title })
         ] }),
         /* @__PURE__ */ jsxs("div", { className: "flex items-center gap-3", children: [
           /* @__PURE__ */ jsx("label", { className: "text-xs uppercase tracking-wider text-muted-foreground", htmlFor: "state", children: "Filter by state" }),
@@ -152,24 +163,20 @@ function ListingsPage() {
       ] }),
       /* @__PURE__ */ jsx(ListingsMap, { listings: filtered })
     ] }) }),
-    SECTIONS.map((sec) => {
-      const rows = filtered.filter((l) => l.status === sec.status);
-      if (rows.length === 0) return null;
-      return /* @__PURE__ */ jsx("section", { id: sec.status, className: "py-20 px-6 border-b border-foreground/5 scroll-mt-20", children: /* @__PURE__ */ jsxs("div", { className: "max-w-7xl mx-auto", children: [
-        /* @__PURE__ */ jsxs("div", { className: "flex items-end justify-between mb-12 gap-6", children: [
-          /* @__PURE__ */ jsxs("div", { children: [
-            /* @__PURE__ */ jsx("h2", { className: "font-serif text-3xl md:text-4xl mb-2", children: sec.title }),
-            /* @__PURE__ */ jsx("p", { className: "text-sm text-muted-foreground max-w-md", children: sec.description })
-          ] }),
-          /* @__PURE__ */ jsxs("span", { className: "text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground", children: [
-            rows.length,
-            " offering",
-            rows.length === 1 ? "" : "s"
-          ] })
+    /* @__PURE__ */ jsx("section", { className: "py-20 px-6 border-b border-foreground/5", children: /* @__PURE__ */ jsxs("div", { className: "max-w-7xl mx-auto", children: [
+      /* @__PURE__ */ jsxs("div", { className: "flex items-end justify-between mb-12 gap-6", children: [
+        /* @__PURE__ */ jsxs("div", { children: [
+          /* @__PURE__ */ jsx("h2", { className: "font-serif text-3xl md:text-4xl mb-2", children: activeSection.title }),
+          /* @__PURE__ */ jsx("p", { className: "text-sm text-muted-foreground max-w-md", children: activeSection.description })
         ] }),
-        /* @__PURE__ */ jsx("div", { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14", children: rows.map((l) => /* @__PURE__ */ jsx(PropertyCard, { listing: l }, l.id)) })
-      ] }) }, sec.status);
-    })
+        /* @__PURE__ */ jsxs("span", { className: "text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground", children: [
+          filtered.length,
+          " offering",
+          filtered.length === 1 ? "" : "s"
+        ] })
+      ] }),
+      filtered.length === 0 ? /* @__PURE__ */ jsx("p", { className: "text-muted-foreground", children: "No offerings match the current filter." }) : /* @__PURE__ */ jsx("div", { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14", children: filtered.map((l) => /* @__PURE__ */ jsx(PropertyCard, { listing: l }, l.id)) })
+    ] }) })
   ] });
 }
 export {

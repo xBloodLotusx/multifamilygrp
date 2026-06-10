@@ -1,5 +1,5 @@
 import { jsxs, jsx } from "react/jsx-runtime";
-import { S as SiteLayout, P as PageHeader } from "./site-layout-vkqlSChi.js";
+import { S as SiteLayout, P as PageHeader } from "./site-layout-DOmaAtVs.js";
 import "@tanstack/react-router";
 import "react";
 import "lucide-react";

@@ -5,11 +5,7 @@ import { ChevronDown, X, Menu } from "lucide-react";
 const NAV = [
   {
     label: "Properties",
-    children: [
-      { to: "/listings", label: "Current Listings" },
-      { to: "/listings", hash: "in-escrow", label: "In Escrow" },
-      { to: "/transactions", label: "Recently Closed" }
-    ]
+    to: "/listings"
   },
   {
     label: "About",
@@ -43,7 +39,15 @@ function SiteNav() {
         "the multifamily group",
         /* @__PURE__ */ jsx("span", { className: "opacity-70", children: "." })
       ] }) }),
-      /* @__PURE__ */ jsx("div", { className: "hidden md:flex items-center gap-1", children: NAV.map((item) => /* @__PURE__ */ jsxs("div", { className: "relative group", children: [
+      /* @__PURE__ */ jsx("div", { className: "hidden md:flex items-center gap-1", children: NAV.map((item) => !item.children ? /* @__PURE__ */ jsx(
+        Link,
+        {
+          to: item.to,
+          className: "px-4 py-2 text-sm font-medium text-white/85 hover:text-white transition-colors",
+          children: item.label
+        },
+        item.label
+      ) : /* @__PURE__ */ jsxs("div", { className: "relative group", children: [
         /* @__PURE__ */ jsxs(
           "button",
           {
@@ -84,6 +88,20 @@ function SiteNav() {
       )
     ] }),
     mobileOpen && /* @__PURE__ */ jsx("div", { className: "md:hidden border-t border-white/10 bg-tmg-navy", children: /* @__PURE__ */ jsx("div", { className: "px-6 py-4 space-y-1", children: NAV.map((item) => {
+      if (!item.children) {
+        return /* @__PURE__ */ jsx("div", { className: "border-b border-white/10 last:border-b-0", children: /* @__PURE__ */ jsx(
+          Link,
+          {
+            to: item.to,
+            onClick: () => {
+              setMobileOpen(false);
+              setOpenMobile(null);
+            },
+            className: "block py-3 text-sm font-medium text-white/90",
+            children: item.label
+          }
+        ) }, item.label);
+      }
       const isOpen = openMobile === item.label;
       return /* @__PURE__ */ jsxs("div", { className: "border-b border-white/10 last:border-b-0", children: [
         /* @__PURE__ */ jsxs(
