@@ -17,9 +17,8 @@ export interface Listing {
   status: ListingStatus;
   class: string;
   image: string;
-  /** rough x/y % position on the US map placeholder (0-100) */
-  mapX: number;
-  mapY: number;
+  lat: number;
+  lng: number;
   summary: string;
 }
 
@@ -55,8 +54,8 @@ export const listings: Listing[] = [
     status: "available",
     class: "Class A-",
     image: property1,
-    mapX: 76,
-    mapY: 72,
+    lat: 27.9506,
+    lng: -82.4572,
     summary: "Bayfront garden-style with stabilized cash flow and capex upside.",
   },
   {
@@ -69,8 +68,8 @@ export const listings: Listing[] = [
     status: "under-contract",
     class: "Value-Add",
     image: property2,
-    mapX: 49,
-    mapY: 70,
+    lat: 30.2672,
+    lng: -97.7431,
     summary: "Three-property roll-up in Central Texas with mark-to-market rent thesis.",
   },
   {
@@ -83,8 +82,8 @@ export const listings: Listing[] = [
     status: "in-escrow",
     class: "Institutional",
     image: property3,
-    mapX: 10,
-    mapY: 55,
+    lat: 32.7157,
+    lng: -117.1611,
     summary: "Core urban high-rise priced below replacement cost.",
   },
   {
@@ -97,8 +96,8 @@ export const listings: Listing[] = [
     status: "available",
     class: "Class A",
     image: property4,
-    mapX: 73,
-    mapY: 60,
+    lat: 33.749,
+    lng: -84.388,
     summary: "Two-asset Sunbelt portfolio inside a top-ten MSA.",
   },
   {
@@ -111,8 +110,8 @@ export const listings: Listing[] = [
     status: "available",
     class: "Mixed-Use",
     image: property5,
-    mapX: 70,
-    mapY: 56,
+    lat: 36.1627,
+    lng: -86.7816,
     summary: "Transit-oriented mixed-use with first-floor retail income.",
   },
   {
@@ -125,8 +124,8 @@ export const listings: Listing[] = [
     status: "closed",
     class: "Value-Add",
     image: property6,
-    mapX: 22,
-    mapY: 60,
+    lat: 33.4484,
+    lng: -112.074,
     summary: "Closed Q1 — sold at a 4.6% cap to a private equity sponsor.",
   },
 ];
