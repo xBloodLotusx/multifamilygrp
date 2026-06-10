@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
+import { ChevronDown } from "lucide-react";
 import heroImg from "@/assets/hero-building.jpg";
 import { SiteLayout } from "@/components/site-layout";
 import { PropertyCard } from "@/components/property-card";
@@ -44,12 +45,6 @@ function Index() {
               >
                 <span aria-hidden>→</span> View Current Listings
               </Link>
-              <Link
-                to="/process"
-                className="text-sm font-medium ring-1 ring-foreground/15 px-5 py-3 rounded-sm hover:bg-foreground hover:text-background transition-colors"
-              >
-                Our Process
-              </Link>
             </div>
           </div>
           <div className="lg:col-span-4">
@@ -64,10 +59,20 @@ function Index() {
             </div>
           </div>
         </div>
+        <div className="max-w-7xl mx-auto mt-16 flex justify-center">
+          <a
+            href="#explore"
+            aria-label="Scroll to explore"
+            className="group inline-flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <span className="text-[10px] uppercase tracking-[0.25em]">Scroll</span>
+            <ChevronDown className="w-5 h-5 animate-bounce" />
+          </a>
+        </div>
       </section>
 
       {/* Stats strip */}
-      <section className="border-y border-foreground/5 bg-surface-muted/40">
+      <section id="explore" className="border-y border-foreground/5 bg-surface-muted/40 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
             { k: "$4.2B+", v: "Transaction Volume" },

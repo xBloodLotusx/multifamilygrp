@@ -51,38 +51,12 @@ function ListingsPage() {
         description="Explore offerings on the interactive map and switch between Available, In Escrow, and Recently Closed below."
       />
 
-      {/* Tabs */}
-      <section className="px-6 pt-10">
-        <div className="max-w-7xl mx-auto flex flex-wrap gap-2 border-b border-foreground/10">
-          {TABS.map((t) => {
-            const isActive = t.status === activeTab;
-            return (
-              <button
-                key={t.status}
-                type="button"
-                onClick={() => setActiveTab(t.status)}
-                className={`px-5 py-3 text-sm font-medium -mb-px border-b-2 transition-colors ${
-                  isActive
-                    ? "border-foreground text-foreground"
-                    : "border-transparent text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {t.title}
-              </button>
-            );
-          })}
-        </div>
-      </section>
-
       {/* Map */}
       <section className="py-12 px-6 bg-surface-muted/40 border-b border-foreground/5">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
-            <div>
-              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-2">
-                Interactive Property Explorer
-              </div>
-              <h2 className="font-serif text-3xl md:text-4xl">{activeSection.title}</h2>
+            <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+              Interactive Property Explorer
             </div>
             <div className="flex items-center gap-3">
               <label className="text-xs uppercase tracking-wider text-muted-foreground" htmlFor="state">
@@ -105,14 +79,34 @@ function ListingsPage() {
         </div>
       </section>
 
+      {/* Tabs between map and cards */}
+      <section className="px-6 pt-10">
+        <div className="max-w-7xl mx-auto flex flex-wrap gap-2 border-b border-foreground/10">
+          {TABS.map((t) => {
+            const isActive = t.status === activeTab;
+            return (
+              <button
+                key={t.status}
+                type="button"
+                onClick={() => setActiveTab(t.status)}
+                className={`px-5 py-3 text-sm font-medium -mb-px border-b-2 transition-colors ${
+                  isActive
+                    ? "border-foreground text-foreground"
+                    : "border-transparent text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {t.title}
+              </button>
+            );
+          })}
+        </div>
+      </section>
+
       {/* Cards for active tab */}
       <section className="py-20 px-6 border-b border-foreground/5">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-end justify-between mb-12 gap-6">
-            <div>
-              <h2 className="font-serif text-3xl md:text-4xl mb-2">{activeSection.title}</h2>
-              <p className="text-sm text-muted-foreground max-w-md">{activeSection.description}</p>
-            </div>
+            <p className="text-sm text-muted-foreground max-w-md">{activeSection.description}</p>
             <span className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
               {filtered.length} offering{filtered.length === 1 ? "" : "s"}
             </span>
